@@ -1,2 +1,26 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<div class="container py-4">
+	<h1 class="mb-4 text-center">Recipes List</h1>
+	<table id="recipes" class="table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Cook Time</th>
+				<th>Difficulty</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @recipes.each do |recipe| %>
+				<tr>
+					<td><%= recipe.title %></td>
+					<td><%= recipe.cook_time %></td>
+					<td><%= recipe.difficulty %></td>
+					<td>
+						<%= link_to 'Check', recipe, class: 'btn btn-sm btn-primary' %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= link_to 'New recipe', new_recipe_path, class: 'btn btn-success' %>
+</div>

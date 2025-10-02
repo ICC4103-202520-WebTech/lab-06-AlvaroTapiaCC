@@ -1,0 +1,30 @@
+<%= form_with model: recipe do |form| %>
+    <% if recipe.errors.any? %>
+        <div class="alert alert-danger py-1 mb-1">
+            <ul class="mb-0">
+                <% recipe.errors.full_messages.each do |msg| %>
+                    <li class="p-0"><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>    
+    <div class="mb-3 fw-bold">
+        <%= form.label :title, class: "form-label" %>
+        <%= form.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :cook_time, "Cook time (minutes)", class: "form-label" %>
+        <%= form.number_field :cook_time, class: "form-control" %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :difficulty, class: "form-label" %>
+        <%= form.select :difficulty, ["Easy", "Medium", "Hard"], {}, class: "form-select" %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :instructions, class: "form-label" %>
+        <%= form.rich_text_area :instructions, class: "form-control" %>
+    </div>
+    <div>
+        <%= form.submit "Save Recipe", class: "btn btn-success" %>
+    </div>
+<% end %>
